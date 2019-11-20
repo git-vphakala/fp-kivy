@@ -362,7 +362,7 @@ class ScoreBoard(GridLayout):
         self.menu.open_modal()
 
 if __name__ == "__main__":
-    from kivy.app import runTouchApp
+    from kivy.app import runTouchApp, stopTouchApp
     from kivy.clock import Clock as KivyClock
 
     # menu.render_gameover
@@ -515,6 +515,7 @@ if __name__ == "__main__":
             # server set score (via game-state)
             print("assert", "update score")
             score_board.render_game_state({"scores":[2, 7], "in-device":False})
+            KivyClock.schedule_once(lambda dt: stopTouchApp(), 5)
 
         KivyClock.schedule_once(change_turn, 1)
 
