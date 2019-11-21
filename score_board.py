@@ -517,7 +517,7 @@ if __name__ == "__main__":
             score_board.render_game_state({"scores":[2, 7], "in-device":False})
             KivyClock.schedule_once(lambda dt: stopTouchApp(), 5)
 
-        KivyClock.schedule_once(change_turn, 2)
+        KivyClock.schedule_once(change_turn, 1)
 
     KivyClock.schedule_once(game_tests, 3)
 
