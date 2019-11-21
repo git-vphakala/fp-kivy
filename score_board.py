@@ -499,7 +499,7 @@ if __name__ == "__main__":
             "scores":[0, 0]}, None)
         print("assert", "start-game")
         assert score_board.col1.children[1].text == "Iines"
-        assert score_board.col2.children[1].text == "Aku"
+        assert score_board.col2.children[1].text == "Hansu" #"Aku"
         assert score_board.col1.children[1].active
         assert not score_board.col2.children[1].active
 
