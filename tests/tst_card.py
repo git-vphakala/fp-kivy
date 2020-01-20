@@ -1,14 +1,20 @@
 """
-Pytest executes run().
+test_app executes run().
 Manually run in the project main directory.
 """
-import sys, os
+import sys
+import os
 from kivy.app import runTouchApp, stopTouchApp
 from kivy.uix.gridlayout import GridLayout
 from kivy.clock import Clock
 
-sys.path.insert(1, os.path.join(sys.path[0], '..'))
-from card import Card
+try:
+    from card import Card
+except ModuleNotFoundError:
+    sys.path.insert(1, os.path.join(sys.path[0], '..'))
+    from card import Card
+
+print("now in", __file__.split("/")[-1])
 
 def stub_click_handler(card):
     """stub_click_handler
@@ -67,6 +73,8 @@ def run(layout, finished_cb=None):
     Clock.schedule_once(lambda dt: stub_turn_up(test_card), 3)
 
 if __name__ == "__main__":
+    sys.path.insert(1, os.path.join(sys.path[0], '..'))
+
     stop_app = True
     LAYOUT = GridLayout(cols=1, padding=100)
     run(LAYOUT)

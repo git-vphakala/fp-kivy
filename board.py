@@ -4,7 +4,8 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.graphics import Color, Rectangle
 from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
-from card import Card
+#from card import Card
+import card
 from models import TWO_CARDS_FACEUP_DELAY
 
 class Filler(GridLayout):
@@ -74,10 +75,10 @@ class Board(GridLayout):
         else:
             filler_size_hint_y = 1
         self.add_widget(self.board)
-        for i, card in enumerate(board):
-            card_name = face_value_map[int(card[:-1])]
+        for i, card_str in enumerate(board):
+            card_name = face_value_map[int(card_str[:-1])]
             #icon_facedown, icon_faceup = self.icons.get_card_icons_by_name(card_name)
-            self.board.add_widget(Card(card_name, self.card_click_handler, i), index=i)
+            self.board.add_widget(card.Card(card_name, self.card_click_handler, i), index=i)
         self.__filler = Filler(cols=1, size_hint_y=filler_size_hint_y)
         self.add_widget(self.__filler)
 
